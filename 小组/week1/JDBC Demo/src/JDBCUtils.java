@@ -1,8 +1,6 @@
 import java.sql.Connection;
 import java.sql.*;
 
-//以下是一个简单的JDBC工具类封装示例，主要包含连接数据库、关闭连接、执行SQL查询和执行SQL更新等操作：
-
 public class JDBCUtils {
     // 静态代码块
     private static final String url = "jdbc:mysql://localhost:3306/db1";
