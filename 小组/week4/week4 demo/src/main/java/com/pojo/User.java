@@ -13,7 +13,7 @@ public class User {
         this.id = rs.getInt("id");
         this.username = rs.getString("username");
         this.password = rs.getString("password");
-        // 初始化其他用户属性...
+
     }
 
     public Integer getId() {
