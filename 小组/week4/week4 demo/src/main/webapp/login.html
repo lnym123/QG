@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <script src=js/jquery-3.7.1.min.js></script> <!-- 引入jQuery -->
+</head>
+<body>
+ <!-- 用于展示数据 -->
+    <h1>登录</h1>
+    <form id="loginForm" action="#" method="post" style="margin-right: 60px">
+        <label for="username">用户名:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="loginPassword"  style="margin-right: 15px">密码:</label>
+        <input type="password" id="loginPassword" name="loginPassword" required><br><br>
+        <input type="button" id="btn" value="登录">
+        <a href="register.html">注册</a>
+
+    </form>
+ <div id="result"> </div>
+<script>
+    $(document).ready(function() {
+        $("#btn").click(function () {
+            var username = $("#username").val();
+            var loginPassword = $("#loginPassword").val();
+            $.ajax({
+                url: 'http://localhost:8080/week4_demo/user/For_Login',
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "username": username,
+                    "password": loginPassword
+                },
+                success: function (response) {
+                    if (response.success) {
+                        alert('登录成功！');
+                    } else {
+                        alert('登录失败！');
+                    }
+                },
+            });
+        });
+    });
+
+</script>
+</body>
+</html>

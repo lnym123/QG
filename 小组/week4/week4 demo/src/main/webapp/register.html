@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <script src=js/jquery-3.7.1.min.js></script> <!-- 引入jQuery -->
+</head>
+<body>
+
+<br>
+<h1>注册</h1>
+<form id="registerForm" action="#" method="post">
+    <label for="account">账号:</label>
+    <input type="text" id="account" name="account" required><br><br>
+    <label for="registerPassword">密码:</label>
+    <input type="password" id="registerPassword" name="registerPassword" required><br><br>
+    <input type="button" id="btn" value="注册">
+    <a href="login.html">返回登录界面</a>
+</form>
+<div id="result"> </div>
+
+<script>
+    $(document).ready(function() {
+        $("#btn").click(function () {
+            var account = $("#account").val();
+            var registerPassword = $("#registerPassword").val();
+            $.ajax({
+                url: 'http://localhost:8080/week4_demo/user/Register',
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "account": account,
+                    "registerPassword": registerPassword
+                },
+                success: function (response) {
+                    if (response.success) {
+                        alert('注册成功！');
+                    } else {
+                        alert('账号已存在！');
+
+                    }
+                },
+            });
+        });
+    });
+
+</script>
+</body>
+</html>
